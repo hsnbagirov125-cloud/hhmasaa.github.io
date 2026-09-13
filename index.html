@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matudroid 3D Telefon</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: monospace, sans-serif;
+        }
+        body {
+            background-color: #0b0f10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #1b211a;
+        }
+        /* Telefon Çərçivəsi */
+        .phone {
+            width: 320px;
+            height: 650px;
+            background: linear-gradient(135deg, #1b382b 0%, #0e1e17 100%);
+            border-radius: 36px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 4px solid #2d4a3e;
+            position: relative;
+        }
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #d0e7d2;
+            padding: 0 4px;
+        }
+        /* Saat və Vidjetlər */
+        .main-clock-section {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .date {
+            font-size: 12px;
+            color: #b5cb99;
+            margin-bottom: 2px;
+        }
+        .time {
+            font-size: 52px;
+            font-weight: bold;
+            color: #f0f7ec;
+            line-height: 1;
+        }
+        .sub-text {
+            font-size: 10px;
+            color: #b5cb99;
+            margin-top: 4px;
+        }
+        /* Vidjetlər Qutusu */
+        .widgets {
+            display: flex;
+            gap: 10px;
+        }
+        .widget {
+            flex: 1;
+            background: #d0e7d2;
+            border-radius: 18px;
+            padding: 12px;
+            font-size: 10px;
+        }
+        .widget-title {
+            font-size: 8px;
+            color: #4a6b5d;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        .widget-big {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1b211a;
+        }
+        /* Tətbiq İkonları Gridi */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 0 4px;
+        }
+        .app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .app-icon {
+            width: 44px;
+            height: 44px;
+            background: #b5cb99;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .app-name {
+            font-size: 9px;
+            color: #d0e7d2;
+            margin-top: 4px;
+        }
+        /* Alt Naviqasiya Paneli */
+        .dock {
+            background: #d0e7d2;
+            border-radius: 20px;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dock-icon {
+            width: 32px;
+            height: 32px;
+            background: #b5cb99;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span>21:16</span>
+            <span>5G 🔋 86%</span>
+        </div>
+
+        <!-- Əsas Saat Bölməsi -->
+        <div class="main-clock-section">
+            <div class="date">13 Sentyabr, Bazar</div>
+            <div class="time">21:16</div>
+            <div class="sub-text">Bugün, sana ait.</div>
+        </div>
+
+        <!-- Vidjetlər -->
+        <div class="widgets">
+            <div class="widget">
+                <div class="widget-title">BİR NEFES AL</div>
+                <div class="widget-big">02:00</div>
+                <div style="font-size: 8px; color: #557062;">Odaklanma</div>
+            </div>
+            <div class="widget">
+                <div class="widget-title">FREKANS</div>
+                <div class="widget-big" style="font-size: 16px; margin-top: 4px;">Yavaşla.</div>
+                <div style="font-size: 8px; color: #557062;">3 səs paketi</div>
+            </div>
+        </div>
+
+        <!-- Tətbiqlər (1-ci Sətir) -->
+        <div class="app-grid">
+            <div class="app-item">
+                <div class="app-icon">💬</div>
+                <div class="app-name">WhatsApp</div>
+            </div>
+            <div class="app-item">
+                <div class="app-icon">📸</div>
+                <div class="app-name">Instagram</div>
+            </div>
+            <div class="app-item">
+                <div class="app-icon">▶️</div>
+                <div class="app-name">YouTube</div>
+            </div>
+            <div class="app-item">
+                <div class="app-icon">🎵</div>
+                <div class="app-name">Spotify</div>
+            </div>
+        </div>
+
+        <!-- Tətbiqlər (2-ci Sətir) -->
+        <div class="app-grid">
+            <div class="app-item">
+                <div class="app-icon">🎮</div>
+                <div class="app-name">Brawl</div>
+            </div>
+            <div class="app-item">
+                <div class="app-icon">🛹</div>
+                <div class="app-name">Subway</div>
+            </div>
+            <div class="app-item">
+                <div class="app-icon">🐍</div>
+                <div class="app-name">Snake</div>
+            </div>
+            <div class="app-item">
+                <div class="app-icon">📝</div>
+                <div class="app-name">Notlar</div>
+            </div>
+        </div>
+
+        <!-- Ən Alt Dock Paneli -->
+        <div class="dock">
+            <div class="dock-icon">📷</div>
+            <div class="dock-icon">🖼️</div>
+            <div class="dock-icon">⏰</div>
+            <div class="dock-icon">⚙️</div>
+        </div>
+    </div>
+
+</body>
+</html>
+
