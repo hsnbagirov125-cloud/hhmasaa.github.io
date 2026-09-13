@@ -32,6 +32,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             border: 4px solid #2d4a3e;
             position: relative;
+            overflow: hidden;
         }
         /* Status Bar */
         .status-bar {
@@ -97,6 +98,12 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .app-item:active {
+            transform: scale(0.92);
         }
         .app-icon {
             width: 44px;
@@ -106,15 +113,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .app-name {
             font-size: 9px;
             color: #d0e7d2;
             margin-top: 4px;
         }
-        /* Alt Naviqasiya Paneli */
+        /* Ən Alt Dock Paneli */
         .dock {
             background: #d0e7d2;
             border-radius: 20px;
@@ -132,6 +139,50 @@
             justify-content: center;
             align-items: center;
             font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Tətbiq açılarkən çıxan səhifə (Modal) */
+        #app-window {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0e1e17;
+            display: none;
+            flex-direction: column;
+            padding: 20px;
+            z-index: 10;
+        }
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #d0e7d2;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2d4a3e;
+            padding-bottom: 10px;
+        }
+        .back-btn {
+            background: #b5cb99;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #1b211a;
+        }
+        .app-content {
+            flex: 1;
+            color: #d0e7d2;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
     </style>
 </head>
@@ -167,53 +218,76 @@
 
         <!-- Tətbiqlər (1-ci Sətir) -->
         <div class="app-grid">
-            <div class="app-item">
+            <a class="app-item" href="https://wa.me" target="_blank">
                 <div class="app-icon">💬</div>
                 <div class="app-name">WhatsApp</div>
-            </div>
-            <div class="app-item">
+            </a>
+            <a class="app-item" href="https://instagram.com" target="_blank">
                 <div class="app-icon">📸</div>
                 <div class="app-name">Instagram</div>
-            </div>
-            <div class="app-item">
+            </a>
+            <a class="app-item" href="https://youtube.com" target="_blank">
                 <div class="app-icon">▶️</div>
                 <div class="app-name">YouTube</div>
-            </div>
-            <div class="app-item">
+            </a>
+            <a class="app-item" href="https://spotify.com" target="_blank">
                 <div class="app-icon">🎵</div>
                 <div class="app-name">Spotify</div>
-            </div>
+            </a>
         </div>
 
         <!-- Tətbiqlər (2-ci Sətir) -->
         <div class="app-grid">
-            <div class="app-item">
+            <a class="app-item" href="https://supercell.com" target="_blank">
                 <div class="app-icon">🎮</div>
                 <div class="app-name">Brawl</div>
-            </div>
-            <div class="app-item">
+            </a>
+            <a class="app-item" onclick="openApp('Subway Surfers', 'Qaçış oyunu yüklənir...')">
                 <div class="app-icon">🛹</div>
                 <div class="app-name">Subway</div>
-            </div>
-            <div class="app-item">
+            </a>
+            <a class="app-item" onclick="openApp('Snake Game', 'İlan oyunu işə düşür...')">
                 <div class="app-icon">🐍</div>
                 <div class="app-name">Snake</div>
-            </div>
-            <div class="app-item">
+            </a>
+            <a class="app-item" onclick="openApp('Notlar', 'Səhifə boşdur. Yeni qeyd yazın.')">
                 <div class="app-icon">📝</div>
                 <div class="app-name">Notlar</div>
-            </div>
+            </a>
         </div>
 
         <!-- Ən Alt Dock Paneli -->
         <div class="dock">
-            <div class="dock-icon">📷</div>
-            <div class="dock-icon">🖼️</div>
-            <div class="dock-icon">⏰</div>
-            <div class="dock-icon">⚙️</div>
+            <a class="dock-icon" href="https://photos.google.com" target="_blank">📷</a>
+            <a class="dock-icon" onclick="openApp('Qalereya', 'Bütün şəkillər buradadır.')">🖼️</a>
+            <a class="dock-icon" onclick="openApp('Saat & Fəaliyyət', 'Siqnal və taymerlər.')">⏰</a>
+            <a class="dock-icon" onclick="openApp('Ayarlar', 'Matudroid sistem ayarları.')">⚙️</a>
+        </div>
+
+        <!-- Tətbiq daxili pəncərə (Simulyasiya üçün) -->
+        <div id="app-window">
+            <div class="app-header">
+                <span id="app-title">Tətbiq</span>
+                <button class="back-btn" onclick="closeApp()">Bağla</button>
+            </div>
+            <div class="app-content" id="app-body">
+                Məzmun...
+            </div>
         </div>
     </div>
 
-</body>
-</html>
+    <script>
+        function openApp(name, content) {
+            document.getElementById('app-title').innerText = name;
+            document.getElementById('app-body').innerText = content;
+            document.getElementById('app-window').style.display = 'flex';
+        }
 
+        function closeApp() {
+            document.getElementById('app-window').style.display = 'none';
+        }
+    </script>
+
+</body>
+        </html>
+        
